@@ -1,0 +1,62 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.5'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.fabrica.p6f5'
+version = '0.0.1-SNAPSHOT'
+description = 'API REST para facturación y pagos de proyecto 6'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+	implementation 'org.postgresql:postgresql'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	
+	// GraphQL
+	implementation 'org.springframework.boot:spring-boot-starter-graphql'
+	
+	// Flyway for database migrations
+	implementation 'org.flywaydb:flyway-core'
+	implementation 'org.flywaydb:flyway-database-postgresql'
+	
+	// OpenAPI/Swagger documentation
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
+	
+	// Lombok for reducing boilerplate (optional but recommended)
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	
+	// PDF generation
+	implementation 'com.itextpdf:itext7-core:8.0.2'
+	
+	// Email support
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.eclipse.angus:jakarta.mail:2.0.3'
+	
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'org.springframework.graphql:spring-graphql-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
